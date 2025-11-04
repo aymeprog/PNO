@@ -1,0 +1,60 @@
+# version: "3.9"
+
+services:
+  mysql:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - test_demo_network
+    env_file:
+      - .env   # <--- ensures Docker reads vars
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${MYSQL_USER}
+      PMA_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "8080:80"
+    depends_on:
+      - mysql
+    networks:
+      - test_demo_network
+    env_file:
+      - .env   # <--- same here
+
+  php:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM php:8.3-fpm
+        RUN docker-php-ext-install pdo pdo_mysql
+    container_name: symfony_php
+    working_dir: /var/www/html
+    volumes:
+      - .:/var/www/html
+    networks:
+      - test_demo_network
+    depends_on:
+      - mysql
+    env_file:
+      - .env
+
+
+
+volumes:
+  mysql_data:
+
+networks:
+  test_demo_network:

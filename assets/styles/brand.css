@@ -1,0 +1,938 @@
+/* =========================================================
+   GLOBAL STYLES
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Century+Gothic&display=swap');
+
+@font-face {
+  font-family: 'Aerospace';
+  src: url('/fonts/Aerospace.ttf') format('truetype');
+}
+
+/* Base */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  font-family: 'Century Gothic', sans-serif;
+  background-color: #f9f9f9;
+  color: #0E1423;
+}
+
+.main-content {
+  margin-left: 240px; /* space for sidebar */
+  padding: 2.5rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.shop, 
+.admin-dashboard {
+  padding-top: 2rem; /* extra space below topbar */
+}
+
+/* Typography */
+h1, h2, h3, h4, h5 {
+  font-family: 'Aerospace', sans-serif;
+  color: #c5ecb0;
+  letter-spacing: 0.05em;
+}
+
+p2 {
+  color: #5ead78;
+  font-weight: bold;
+}
+
+p {
+  color: #5ead78;
+}
+
+p1 {
+  color: #4b8dac;
+}
+
+a {
+  color: #858D75;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #0E1423;
+}
+
+/* Containers */
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 2rem auto;
+}
+
+main.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* =========================================================
+   NAVBAR
+========================================================= */
+.navbar {
+  background-color: #858D75; /* Sage green */
+  color: white;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 0;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.navbar-container {
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Aerospace', sans-serif;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  letter-spacing: 0.05em;
+}
+
+.brand-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.nav-links a {
+  color: white;
+  margin-left: 1.5rem;
+  font-size: 0.95rem;
+}
+
+.nav-links a:hover {
+  color: #0E1423;
+}
+
+/* =========================================================
+   HERO SECTION
+========================================================= */
+.hero {
+  background: url('/images/home-bg.jpg') center/cover no-repeat;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #0E1423;
+  position: relative;
+}
+
+.hero-overlay {
+  background: rgba(14, 20, 35, 0.55);
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #858D75;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: #0E1423;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-outline {
+  background-color: #858D75;
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  background-color: #0E1423;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* =========================================================
+   NEW ARRIVALS
+========================================================= */
+.new-arrivals {
+  text-align: center;
+  padding: 5rem 0;
+}
+
+.new-arrivals h2 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 2.2rem;
+  color: #0E1423;
+  margin-bottom: 1rem;
+}
+
+.category-tabs {
+  margin-bottom: 2rem;
+}
+
+.category-tabs a {
+  margin: 0 1rem;
+  color: #858D75;
+  font-weight: bold;
+}
+
+/* =========================================================
+   PRODUCT GRID
+========================================================= */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  width: 90%;
+  max-width: 1000px;
+  margin: 2rem auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* =========================================================
+   PRODUCT SEARCH BAR
+========================================================= */
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.5rem auto;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.search-bar input:focus {
+  border-color: #858D75;
+}
+
+.search-bar button {
+  background-color: #858D75;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  background-color: #0E1423;
+}
+
+/* =========================================================
+   COLLECTION SECTION
+========================================================= */
+.collections {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  margin-top: 5rem;
+}
+
+.collection-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.collection-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.collection-card:hover img {
+  transform: scale(1.05);
+}
+
+.collection-card .overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(14, 20, 35, 0.5);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.collection-card:hover .overlay {
+  opacity: 1;
+}
+
+/* =========================================================
+   ABOUT SECTION
+========================================================= */
+.about {
+  width: 80%;
+  max-width: 900px;
+  margin: 5rem auto;
+  text-align: center;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   CONTACT SECTION
+========================================================= */
+.contact {
+  width: 80%;
+  max-width: 600px;
+  margin: 5rem auto;
+  text-align: center;
+}
+
+.contact form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact input,
+.contact textarea {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+.contact button {
+  align-self: center;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+footer {
+  background-color: #858D75;
+  color: white;
+  text-align: center;
+  padding: 0.5rem 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.03em;
+  margin-left: 240px; /* align with sidebar */
+}
+
+footer p {
+  opacity: 0.85; 
+  margin: 0;
+}
+
+/* =========================================================
+   CREATE PRODUCT FORM
+========================================================= */
+.product-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 1.5rem;
+}
+
+/* Style each form group */
+.product-form .form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optional: Center the labels and inputs */
+.product-form label {
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #4b8dac;
+}
+
+.product-form input,
+.product-form textarea,
+.product-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ccc;
+  font-family: 'Century Gothic', sans-serif;
+  background-color: #fff;
+  color: #0E1423;
+}
+
+.search-bar {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* ==============================
+   ADMIN DASHBOARD (HOME PAGE)
+   ============================== */
+
+.admin-dashboard {
+  width: 90%;
+  max-width: 1100px;
+  margin: 6rem auto 3rem;
+  text-align: center;
+  color: #0E1423;
+}
+
+.admin-dashboard h1 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: #0E1423;
+}
+
+.admin-dashboard .subtitle {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 3rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.admin-card {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  padding: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.admin-card h3 {
+  font-family: 'Aerospace', sans-serif;
+  color: #0E1423;
+  margin-bottom: 0.5rem;
+}
+
+.admin-card p {
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.overview-section {
+  text-align: left;
+  background-color: #f7f7f7;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.overview-section h2 {
+  font-family: 'Aerospace', sans-serif;
+  color: #0E1423;
+}
+
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.overview-item {
+  background-color: white;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+.overview-item h4 {
+  color: #858D75;
+  margin-bottom: 0.5rem;
+  font-family: 'Century Gothic', sans-serif;
+}
+
+/* =========================================================
+   MANAGE PRODUCTS PAGE (ADMIN)
+========================================================= */
+
+.page-header {
+  display: flex;
+  flex-direction: column;       /* stack heading + button */
+  align-items: center;          /* center horizontally */
+  justify-content: center;
+  text-align: center;
+  margin: 4rem auto 2rem;
+  gap: 1rem;
+}
+
+.page-header h1 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 2rem;
+  color: #0E1423;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* optional: smaller adjustment for product grid spacing */
+.shop .product-grid {
+  margin-top: 2rem;
+}
+
+/* =========================================================
+   ADMIN SIDEBAR LAYOUT
+========================================================= */
+
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* SIDEBAR */
+/* =========================================================
+   SIDEBAR LAYOUT
+========================================================= */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 240px;
+  background-color: #858D75;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 2rem 0;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Header (Logo + Brand) */
+.sidebar-header {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-header h2 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 1.3rem;
+  color: white;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-top: 2rem;
+  padding: 0 1.5rem;
+}
+
+.sidebar-nav a {
+  color: white;
+  text-decoration: none;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sidebar-nav a:hover {
+  color: #0E1423;
+  transform: translateX(4px);
+}
+
+/* Sidebar footer */
+.sidebar-footer {
+  text-align: left;
+  padding: 0 1.5rem;
+  margin-top: auto;
+}
+
+.sidebar-footer a {
+  color: #f4c7a1;
+  text-decoration: none;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.sidebar-footer a:hover {
+  color: #fff;
+  transform: translateX(4px);
+}
+
+/* MAIN CONTENT */
+.admin-content {
+  margin-left: 240px; /* leave space for sidebar */
+  padding: 2rem;
+  width: calc(100% - 240px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .sidebar-nav {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  .admin-content {
+    margin-left: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+}
+
+/* =========================================================
+   MANAGE PRODUCTS PAGE (CENTERED & SIDEBAR-AWARE)
+========================================================= */
+
+.shop {
+  width: calc(100% - 220px); /* slightly less wide, balances layout */
+  margin-left: 220px; /* tighter alignment beside sidebar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 2rem 4rem 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.page-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 2rem auto 3rem;
+  gap: 1rem;
+}
+
+.page-header h1 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 2rem;
+  color: #0E1423;
+  margin: 0;
+  letter-spacing: 0.05em;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Adjust grid width to fit content */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.product-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+}
+
+.product-card h3 {
+  font-family: 'Aerospace', sans-serif;
+  color: #0E1423;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-family: 'Century Gothic', sans-serif;
+  color: #858D75;
+  font-weight: bold;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* =========================================================
+   MANAGE PRODUCTS PAGE (CENTERED + SIDEBAR-AWARE)
+========================================================= */
+
+.shop {
+  width: calc(100% - 220px); /* slightly less wide, balances layout */
+  margin-left: 220px; /* tighter alignment beside sidebar */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 2rem 2rem 4rem 2rem;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.page-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.page-header h1 {
+  font-family: 'Aerospace', sans-serif;
+  font-size: 2.3rem;
+  color: #0E1423;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.page-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-actions .btn-primary {
+  background-color: #858D75;
+  color: white;
+  padding: 0.7rem 1.8rem;
+  border-radius: 2rem;
+  text-decoration: none;
+  font-family: 'Century Gothic', sans-serif;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.page-actions .btn-primary:hover {
+  background-color: #0E1423;
+  transform: scale(1.05);
+}
+
+/* Product grid */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1100px; /* slightly wider for smoother layout */
+  width: 100%;
+  justify-content: center;
+}
+
+.product-card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  border-radius: 1rem;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-family: 'Aerospace', sans-serif;
+  color: #0E1423;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  font-family: 'Century Gothic', sans-serif;
+  color: #858D75;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+/* Card action buttons */
+.card-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 2px solid #858D75;
+  color: #858D75;
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: #858D75;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover {
+  background-color: #b72d39;
+  transform: scale(1.05);
+}

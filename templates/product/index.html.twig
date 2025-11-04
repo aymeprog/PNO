@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Manage Products — P.NO{% endblock %}
+
+{% block body %}
+<section class="shop">
+  <div class="page-header">
+    <h1>Manage Products</h1>
+
+    <div class="page-actions">
+      <form method="get" action="{{ path('products_index') }}" class="search-bar">
+        <input 
+          type="text" 
+          name="q" 
+          value="{{ app.request.get('q') }}" 
+          placeholder="Search product..." 
+        >
+        <button type="submit" class="btn-outline">Search</button>
+      </form>
+
+      <a href="{{ path('product_new') }}" class="btn-primary">Add Product</a>
+    </div>
+  </div>
+
+  <div class="product-grid">
+    {% for product in products %}
+      <div class="product-card">
+        <a href="{{ path('product_show', {id: product.id}) }}">
+          <img src="{{ asset('images/' ~ (product.image ?: 'placeholder.jpg')) }}" alt="{{ product.name }}">
+        </a>
+        <h3>{{ product.name }}</h3>
+        <p class="price">₱{{ product.price|number_format(2, '.', ',') }}</p>
+
+        <div class="card-actions">
+          <a href="{{ path('product_edit', {id: product.id}) }}" class="btn-outline">Edit</a>
+          <form method="post" action="{{ path('product_delete', {id: product.id}) }}" style="display:inline">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+            <button class="btn-danger" type="submit">Delete</button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p>No products found.</p>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

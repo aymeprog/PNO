@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+  <section class="create-product container">
+    <h2>Create Product</h2>
+    {{ form_start(form, {'attr': {'class': 'product-form'}}) }}
+      {{ form_widget(form) }}
+      <button class="btn-primary">Save</button>
+    {{ form_end(form) }}
+  </section>
+{% endblock %}

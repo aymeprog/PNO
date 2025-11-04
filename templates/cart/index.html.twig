@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<section class="cart">
+  <h1>Your Cart</h1>
+
+  {% if items|length %}
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Qty</th>
+          <th>Subtotal</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for it in items %}
+          <tr>
+            <td>
+              <a href="{{ path('product_show', {id: it.product.id}) }}">
+                <img src="{{ asset('images/' ~ (it.product.image ?: 'placeholder.jpg')) }}" alt="{{ it.product.name }}" style="width:70px;vertical-align:middle">
+                {{ it.product.name }}
+              </a>
+            </td>
+            <td>₱{{ it.product.price|number_format(2,'.',',') }}</td>
+            <td>
+              <form action="{{ path('cart_update', {id: it.product.id}) }}" method="post" style="display:flex; gap:0.5rem; align-items:center;">
+                <input type="number" name="qty" value="{{ it.qty }}" min="0" style="width:70px;">
+                <button class="btn-primary">Update</button>
+              </form>
+            </td>
+            <td>₱{{ it.subtotal|number_format(2,'.',',') }}</td>
+            <td>
+              <form method="post" action="{{ path('cart_remove', {id: it.product.id}) }}">
+                <button class="btn-danger">Remove</button>
+              </form>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <p><strong>Total: </strong> ₱{{ total|number_format(2,'.',',') }}</p>
+
+      <form method="post" action="{{ path('cart_clear') }}">
+        <button class="btn-outline">Clear Cart</button>
+      </form>
+
+      <a href="#" class="btn-primary">Checkout</a>
+    </div>
+  {% else %}
+    <p>Your cart is empty. <a href="{{ path('products_index') }}">Shop now</a></p>
+  {% endif %}
+</section>
+{% endblock %}

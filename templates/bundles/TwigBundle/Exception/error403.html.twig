@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Access Denied{% endblock %}
+
+{% block body %}
+<div style="text-align:center; margin-top:100px;">
+    <h1 style="color:#0E1423;">HTTP 401 Unauthorized</h1>
+    <p style="color:#858D75;">Full authentication is required to access this resource.</p>
+    <p style="font-style:italic;">Protected Route: /dashboard</p>
+</div>
+{% endblock %}

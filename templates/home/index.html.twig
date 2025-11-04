@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Dashboard — P.NO{% endblock %}
+
+{% block body %}
+<section class="admin-dashboard">
+  <h1>Welcome, Admin</h1>
+  <p class="subtitle">Manage your fashion brand — Minimal. Elegant. Yours.</p>
+
+  <!-- Quick Overview -->
+  <div class="overview-section">
+    <h2>Quick Overview</h2>
+    <div class="overview-grid">
+      <div class="overview-item">
+        <h4>Total Products</h4>
+        <p2>1999</p2>
+      </div>
+      <div class="overview-item">
+        <h4>Total Orders</h4>
+        <p2>21</p2>
+      </div>
+      <div class="overview-item">
+        <h4>Revenue</h4>
+        <p2>2.5M</p2>
+      </div>
+      <div class="overview-item">
+        <h4>Visitors</h4>
+        <p2>3.6k</p2>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Manage Section -->
+  <div class="admin-grid">
+    <div class="admin-card">
+      <h3>🛍️ Products</h3>
+      <p>View, add, and manage your fashion items.</p>
+      <a href="{{ path('products_index') }}" class="btn-primary">Manage Products</a>
+    </div>
+
+    <div class="admin-card">
+      <h3>📂 Categories</h3>
+      <p>Organize items into elegant collections.</p>
+      <a href="#" class="btn-primary">View Categories</a>
+    </div>
+
+    <div class="admin-card">
+      <h3>🧾 Orders</h3>
+      <p>Track your customers' purchases and payments.</p>
+      <a href="#" class="btn-primary">View Orders</a>
+    </div>
+
+    <div class="admin-card">
+      <h3>📈 Reports</h3>
+      <p>See your sales overview and performance insights.</p>
+      <a href="#" class="btn-primary">View Reports</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

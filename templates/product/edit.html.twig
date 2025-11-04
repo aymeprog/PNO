@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Product — P.NO{% endblock %}
+
+{% block body %}
+<section class="product-form">
+  <h1>Edit Product</h1>
+
+  {# Show current image preview if it exists #}
+  {% if product.image %}
+    <div style="text-align:center; margin-bottom: 1.5rem;">
+      <img src="{{ asset('images/' ~ product.image) }}" alt="{{ product.name }}" style="width: 250px; border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+    </div>
+  {% endif %}
+
+  {{ form_start(form, {'attr': {'enctype': 'multipart/form-data'}}) }}
+    <div class="form-group">
+      {{ form_label(form.name) }}
+      {{ form_widget(form.name, {'attr': {'placeholder': 'Product Name'}}) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.price) }}
+      {{ form_widget(form.price, {'attr': {'placeholder': 'Enter price (₱)'}}) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.description) }}
+      {{ form_widget(form.description, {'attr': {'placeholder': 'Product description here...'}}) }}
+    </div>
+
+    <div class="form-group">
+      {{ form_label(form.imageFile) }}
+      {{ form_widget(form.imageFile) }}
+      <small style="color: #888;">Accepted formats: JPG, PNG (max 2MB)</small>
+    </div>
+
+    <button class="btn-primary" type="submit">Update</button>
+  {{ form_end(form) }}
+</section>
+{% endblock %}

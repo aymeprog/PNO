@@ -1,17 +1,49 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+  <head>
+    <meta charset="UTF-8">
+    <title>{% block title %}P.NO — Minimal. Elegant. Yours.{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('styles/brand.css') }}">
+    <link rel="icon" href="{{ asset('images/logo.png') }}">
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts %}{% endblock %}
+  </head>
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+  <body>
+    <!-- =========================
+         SIDEBAR ONLY
+    ========================== -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="{{ asset('images/logo.png') }}" alt="P.NO Logo" class="sidebar-logo">
+        <h2>P.NO</h2>
+      </div>
+
+      <nav class="sidebar-nav">
+        <a href="{{ path('home') }}">🏠 Dashboard</a>
+        <a href="{{ path('products_index') }}">🛍️ Products</a>
+        <a href="#">📂 Categories</a>
+        <a href="#">🧾 Orders</a>
+        <a href="#">📈 Reports</a>
+      </nav>
+
+      <div class="sidebar-footer">
+        <a href="#">🚪 Logout</a>
+      </div>
+    </aside>
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-content">
+      {% block body %}{% endblock %}
+    </main>
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+    <footer>
+      <p>© 2025 P.NO — Minimal. Elegant. Yours.</p>
+    </footer>
+  </body>
 </html>
